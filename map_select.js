@@ -106,7 +106,7 @@ $.fn.mapSelect = function (options) {
       self.changeAddress();
     });
 
-    google.maps.event.addListener(this.mapObj.marker, "dragend", function(e) {
+    google.maps.event.addListener(this.mapObj.marker, 'dragend', function(e) {
       self.lat = e.latLng.lat();
       self.long = e.latLng.lng();
       self.updateLocation();
