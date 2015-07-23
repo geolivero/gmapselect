@@ -6,6 +6,8 @@ $.fn.mapSelect = function (options) {
   var MAP, defaults;
 
   defaults = $.extend({
+    initial_lat: 51.931922,
+    initial_long: 4.459878,
     postURL: '',
     callback: function () {
       return;
@@ -22,7 +24,6 @@ $.fn.mapSelect = function (options) {
   MAP.prototype.geolocate = function () {
     var self = this;
     if (navigator.geolocation) {
-      console.log(navigator.geolocation );
       navigator.geolocation.getCurrentPosition(function(position) {
         var geolocation = new google.maps.LatLng(
             position.coords.latitude, position.coords.longitude);
@@ -34,7 +35,6 @@ $.fn.mapSelect = function (options) {
         self.long = position.coords.longitude;
         self.updateLocation();
         self.updateFields();
-        //self.autoComplete.setBounds(circle.getBounds());
       }, function (error) {
         alert('We konden jouw adres niet vinden. Omdat locatie delen uit staat.');
         console.log(error);
@@ -72,8 +72,8 @@ $.fn.mapSelect = function (options) {
     var self = this;
     this.searchEl = this.$el.find('.map_widget__search')[0];
     this.preMapObj = this.$el.find('.map__widget').maps({
-      lat: 51.931922,
-      long: 4.459878,
+      lat: defaults.lat,
+      long:  defaults.long,
       marker: true,
       zoom: 14,
       panControl: true,
@@ -88,7 +88,7 @@ $.fn.mapSelect = function (options) {
       self.addMapActions();
       self.geolocate();
     }, 100);
-    
+
   };
 
   MAP.prototype.updateFields = function() {
@@ -106,9 +106,9 @@ $.fn.mapSelect = function (options) {
       self.changeAddress();
     });
 
-    google.maps.event.addListener(this.mapObj.marker, "dragend", function(e) { 
-      self.lat = e.latLng.lat(); 
-      self.long = e.latLng.lng(); 
+    google.maps.event.addListener(this.mapObj.marker, "dragend", function(e) {
+      self.lat = e.latLng.lat();
+      self.long = e.latLng.lng();
       self.updateLocation();
       self.updateFields();
     });
@@ -127,7 +127,7 @@ $.fn.mapSelect = function (options) {
     this.updateFields();
   };
 
-  
+
 
   this.each(function () {
     new MAP(this);

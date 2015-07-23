@@ -12,6 +12,8 @@ var $ = require('jquery'),
 
 $(function () {
   $(element).mapSelect({
+    initial_lat: 51.931922,
+    initial_long: 4.459878,
     postURL: 'ajaxposturl',
     callback: function (data) {
 
