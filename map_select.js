@@ -44,6 +44,7 @@ $.fn.mapSelect = function (options) {
   };
 
   MAP.prototype.createTemplate = function () {
+
     var html = [
       '<div class="map__widget">',
       '</div>',
@@ -53,18 +54,21 @@ $.fn.mapSelect = function (options) {
       '<span class="map__widget_long"></span>',
       '</div>',
       '<div class="map__widget_btns"><button class="btn">Bewaren</button></div>'
-    ].join('');
+    ].join(''), self = this;
 
     this.$el.append(html);
     this.$lat = this.$el.find('.map__widget_lat');
     this.$long = this.$el.find('.map__widget_long');
     this.$btn = this.$el.find('.map__widget_btns .btn');
 
-    this.$btn.on('click', function () {
-      console.log(defaults);
+    this.$btn.on('click', function (e) {
       if (defaults.url.length) {
-        defaults.callback();
+        $.post({
+          lat: self.lat,
+          long: self.long,
+        }, defaults.callback);
       }
+      e.preventDefaults();
     });
   };
 
