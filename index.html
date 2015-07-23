@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Gmapselect</title>
+  <style type="text/css" media="screen">
+    div#map {
+      width: 100%;
+      border: solid 1px black;
+    }
+    .map__widget {
+      height: 250px; width: 100%;
+    }
+    .search_field {
+      height: 30px;
+    }
+    .search_field input {
+      width: 100%;
+      padding: 5px;
+      box-sizing: border-box;
+    }
+    .map__widget_info {
+      height: 30px;
+    }
+    .map__widget_btns {
+
+    }
+    .map__widget_btns button {
+      width: 100%;
+      font-size: 130%; padding: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div id="container">
+    <h1>Gmapselect</h1>
+    <div id="map"></div>
+  </div>
+  <script src="app.bundle.js"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true&libraries=places"></script>
+</body>
+</html>
