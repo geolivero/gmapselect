@@ -4,7 +4,7 @@ var $ = require('jquery'),
 
   $(function () {
     $('#map').mapSelect({
-      url: 'http://www.cakesplaza.com',
+      postURL: 'http://www.ajaxpost.com',
       callback: function () {
         alert('done');
       }
