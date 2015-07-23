@@ -47,8 +47,6 @@ $.fn.maps = function(options) {
       mapTypeId: google.maps.MapTypeId.ROADMAP
     });
 
-    this.map;
-
     this.map.setOptions({
       styles: styles
     });
@@ -67,7 +65,6 @@ $.fn.maps = function(options) {
           icon: highResIcon
         });
       }
-      this.marker;
     }
   };
 
