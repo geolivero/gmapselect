@@ -6,7 +6,7 @@ $.fn.mapSelect = function (options) {
   var MAP, defaults;
 
   defaults = $.extend({
-    url: '',
+    postURL: '',
     callback: function () {
       return;
     }
